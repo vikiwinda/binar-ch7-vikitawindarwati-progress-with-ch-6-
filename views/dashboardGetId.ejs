@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Dashboard By Id</title>
+</head>
+<body class="bg-light">
+    <div class="jumbotron bg-light">
+        <div class="container">
+            <div class="jumbotron bg-active">
+                <h1 style="font-size:40px;">User by Id</h1>
+            </div>
+            <table class="table table-sm table-bordered table-striped" data-link="row">
+                <thead class="table-dark">
+                    <tr>
+                        <%- include('partials/tablehead')  %>
+                        <th scope="col" class="text-center">User Biodata</th>
+                        <th scope="col" class="text-center">User History</th>
+                        <th colspan="2"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="font-size: medium;">
+                        <th scope="row"><%= data.id %> </th>
+                        <td><%= data.username %> </td>
+                        <td><%= data.email %> </td>
+                        <td><%= data.password %> </td>
+                        <td class="text-center"><%= data.console %> </td>
+                        <td><%= data.user_game_biodata %></td>
+                        <td><%= data.user_game_history %></td>
+                        <td class="text-center align-middle">
+                            <form action="http://localhost:8000/dashboards/update/<%= data.id %>">
+                                <input type="submit" value="UPDATE" class="btn btn-primary"/>
+                            </form>
+                        </td>
+                        <td class="text-center align-middle">
+                            <form method="post" action="http://localhost:8000/dashboards/delete/<%= data.id %>?_method=DELETE" >
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="submit" value="DELETE" class="btn bg-dark text-light"/>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div>
+                <%- include('partials/buttonnewuser')  %> 
+            </div>
+        </div>
+    </div>
+</body>
+</html>

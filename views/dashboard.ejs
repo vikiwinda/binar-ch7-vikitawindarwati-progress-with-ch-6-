@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Bootstrap Sidebar</h3>
+            </div>
+    
+            <ul class="list-unstyled components">
+                <p>Dummy Heading</p>
+                <li class="active">
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li><a href="#">Home 1</a></li>
+                        <li><a href="#">Home 2</a></li>
+                        <li><a href="#">Home 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li><a href="#">Page 1</a></li>
+                        <li><a href="#">Page 2</a></li>
+                        <li><a href="#">Page 3</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    <!-- page content -->
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light mt-2">
+                <div class="container-fluid">
+                    <button type="button" id="sidebarCollapse" class="btn btn-outline-secondary">
+                        <i class="fas fa-align-left"></i>
+                        <span><img src="https://img.icons8.com/ios-glyphs/30/000000/user-menu-male.png"/></span>
+                    </button>
+                    <div class="jumbotron bg-light">
+                        <div class="container">
+                            <div class="jumbotron bg-active">
+                                <h1 style="font-size:50px;">Welcome Admin</h1>
+                            </div style="overflow-x: auto;">
+                            <table class="table table-bordered table-striped table-responsive" data-link="row">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <%- include('partials/tablehead')  %> 
+                                        <th colspan="4" scope="col" style="min-width: 35%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody style="cursor: pointer">
+                                <% if (data.length>0) { %>
+                                    <% data.forEach((user)=> { %> 
+                                    <tr class="font-weight-bold" onclick="window.location.assign('http://localhost:8000/dashboard/<%=user.id%>')">
+                                        <th scope="row"><%= user.id %> </th>
+                                        <td><%= user.username %> </td>
+                                        <td><%= user.email %> </td>
+                                        <td><%= user.password %> </td>
+                                        <td class="text-center"><%= user.role %> </td>
+                                        
+                                        <td class="text-center"><button type="button" class="btn btn-danger text-light btn-sm mb-3" style="width:10em" disabled>PROFILE</button>
+                                                                <button type="button" class="btn btn-primary btn-sm" style="width:10em" disabled>HISTORY</button></td>
+                                        <td class="text-center align-middle">
+                                            <form action="http://localhost:8000/dashboards/update/<%= user.id %>">
+                                                <input type="submit" value="UPDATE" class="btn btn-primary"/>
+                                            </form>
+                                        </td>
+                                        <td class="text-center align-middle">
+                                            <form method="post" action="http://localhost:8000/dashboards/delete/<%= user.id %>?_method=DELETE" >
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="submit" value="DELETE" class="btn bg-dark text-light"/>
+                                            </form>
+                                        </td>                                               
+                                    </tr>
+                                    <% }); %>
+                                <% } else { %>
+                                    <tr>
+                                        <td colspan="5">NO USER FOUND</td>
+                                    </tr>
+                                <% } %> 
+                                </tbody>
+                            </table>
+                            <div>
+                                <%- include('partials/buttonnewuser')  %> 
+                            </div>
+                        </div>
+                    </div
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+</html>

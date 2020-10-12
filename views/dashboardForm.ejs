@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %> 
+    <title>Add User | Form</title>
+</head>
+<body>
+    <div class="container bg-dark">
+        <h1 class="mt-5" style="font-size: 3rem; color: whitesmoke">New User</h1>
+    </div>
+    <div class="container mt-5 mb-5">
+        <form method="POST" action="/dashboards/form">
+            <%- include('partials/form') %>
+            <div class="form-group row" style="margin-left: 64%;">
+                <button type="submit" class="btn btn-dark mt-5" style="width: 10em;">CREATE</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
