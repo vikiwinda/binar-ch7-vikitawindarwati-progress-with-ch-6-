@@ -15,35 +15,35 @@ module.exports = {
       username: 'Jonathan',
       email: 'JoJo@mail.com',
       password: 'diodio',
-      console: 'No',
+      role: 'Player',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       username: 'DioBrando',
       email: 'konodioda@mail.com',
       password: 'JoeJoe',
-      console: 'Yes',
+      role: 'Player',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       username: 'AngelaMoss',
       email: 'ecorp@mail.com',
-      password: 'iwillbesuccessful',
-      console: 'No',
+      password: 'everybodyWantsToRule',
+      role: 'Player',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       username: 'TylerDurden',
       email: 'firstrule@mail.com',
       password: 'YouDoNotTalkAbout',
-      console: 'Yes',
+      role: 'Player',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       username: 'SquidwardTentacles',
       email: 'clarinet@mail.com',
       password: 'HereLiesDreamAndHope',
-      console: 'No',
+      role: 'Player',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
